@@ -1,0 +1,33 @@
+<div >
+    <div class="row mt-5 pt-5">
+        <div class="col-sm-8 offset-sm-2">
+            <div class="card  border-warning mb-3">
+                <div class="card-header text-center"><h3></h3></div>
+                <div class="card-body">
+                    <div class="alert alert-warning" *ngIf="ApprovalList===0">No Faculty To approve</div>
+                    <ul class="list-group">
+                        <li class="list-group-item" *ngFor="let approval of ApprovalList">
+                            <div class="row">
+                                <div class="col-sm-4 pt-2">
+                                    <h5> &nbsp;{{approval.data().name}} </h5>
+                                </div>                    
+                                <div class="col-sm-2 offset-sm-6 float-right pt-2">
+                                    <button class="btn btn-sm btn-success" (click)="accept(approval.id)">Accept</button>
+                                    <button class="btn btn-sm btn-danger float-right" (click)="reject(approval.id)">Reject</button>
+                                </div>                    
+                            </div> 
+                            <div class="pt-3">
+                                <div class="card-footer text-muted">
+                                    Applied On
+                                </div>
+                            </div>
+                        </li>
+                        <div class="alert alert-warning pt-3 text-center" *ngIf='ApprovalList.length == 0'>
+                            No Applications 
+                        </div> 
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>       
+</div>

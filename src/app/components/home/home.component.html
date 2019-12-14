@@ -1,0 +1,54 @@
+<div class=" p-5">
+    <div class="row ">
+        <div class="col-sm-3 offset-sm 1 ">
+            <div class="card mt-5">
+                <img  class="card-img-top" src="../../../assets/profile.jpg" height="250px" width="250px">
+                <div class="card-body text-center">
+                    <h4 class="card-title">{{userName}}</h4>
+                </div>
+                <a class="btn btn-sm btn-primary block" routerLink='/profile/{{userId}}'>Profile</a>
+            </div>
+        </div>
+        <div class="col-sm-6 mt-4 pt-4">
+            <div class="accordion" id="accordionExample" *ngIf='isFaculty'>
+                <div class="card">
+                  <div class="card-header" id="headingOne">
+                    <h2 class="text-center">
+                      <button class="btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Post Internship
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <app-posting-form (internshipCreated)='onInternshipCreated()'></app-posting-form>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="headingTwo">
+                    <h2 class="text-center">
+                      <button class="btn" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Post Notice
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                    <app-post-notice></app-post-notice>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <h4 class="text-center pt-3">Internships</h4>
+            <app-post *ngFor="let internship of internships"
+                      [internship]="internship.data()"
+                      [int]="internship"
+                      [uid]="internship.id"
+                      (onDelete)="onInternshipDeleted()"></app-post>
+            <div class="alert alert-warning pt-3" *ngIf='internships.length == 0'>
+                No Internships Avaliable
+            </div> 
+        </div>
+    </div>
+</div>

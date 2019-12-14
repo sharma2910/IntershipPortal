@@ -1,0 +1,22 @@
+<div class="card text-blank mt-4">
+   
+        <div class="card-body">
+            <a class="decoration" routerLink="/view/{{uid}}">
+            <div class="card-title pb-5">
+                <h2> {{internship.title}}</h2>
+                <div class="float-right">
+                    <h2>{{internship.company}}</h2>
+                </div>
+            </div>
+            <div class="card-text pb-3">
+                 {{internship.details.substring(0,50) }}....
+            </div>
+            <div class="card-text pb-3">
+            </div>
+            </a>
+            <div class="card-footer text-muted">
+                Posted on {{internship.created.toDate() | date: 'MMM dd, yyyy'}}
+                <button class="btn btn-danger card-link btn-sm float-right" type="button" (click)="Delete()" *ngIf='internship.owner === user.uid'>Delete</button>
+            </div>
+        </div>
+</div>

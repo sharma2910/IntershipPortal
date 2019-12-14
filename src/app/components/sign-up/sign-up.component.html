@@ -1,0 +1,130 @@
+    <div class="col-6 offset-3  p-5 pb-5">
+        <div class="">
+            <div class="">
+                <div class="card border-0">
+                    <div class="card-title text-center pt-5">
+                        <h5>Register</h5>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+                            <div class="form-row">
+                                <div class="form-group col-sm-6">
+                                    <label>First Name</label>
+                                    <input type="text" 
+                                        class="form-control"
+                                        placeholder="First Name"
+                                        [formControl]="myForm.controls['firstName']">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                        <label>Last Name</label>
+                                    <input type="text" 
+                                        class="form-control"
+                                        placeholder="Last Name"
+                                        [formControl]="myForm.controls['lastName']">
+                                </div>
+                            </div>
+                            <div class="alert alert-danger" 
+                                *ngIf="( !myForm.controls['firstName'].valid || !myForm.controls['lastName'].valid )&&
+                                ( myForm.controls['firstName'].touched || myForm.controls['lastName'].touched )">
+                                First and Last Name Required 
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-sm-6">
+                                    <label>Branch</label>
+                                    <select 
+                                     class="form-control"
+                                     [formControl]="myForm.controls['branch']">
+                                        <option value="" disabled selected> -- SELECT -- </option>
+                                        <option value="CS">CS</option>
+                                        <option value="IT">IT</option>
+                                        <option value="E&TC">E&TC</option>
+                                        <option value="MECH">MECH</option>
+                                        <option value="CIVIL">CIVIL</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label>Year</label>
+                                    <select 
+                                     class="form-control"
+                                     [formControl]="myForm.controls['year']">
+                                        <option value="" disabled selected> -- SELECT -- </option>
+                                        <option value="2016">2016-20</option>
+                                        <option value="2017">2017-21</option>
+                                        <option value="2018">2018-22</option>
+                                        <option value="2019">2019-23</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="alert alert-danger" 
+                                *ngIf="( !myForm.controls['branch'].valid || !myForm.controls['year'].valid )&&
+                                ( myForm.controls['branch'].touched || myForm.controls['year'].touched )">
+                                Please Provide Branch And Batch 
+                            </div>
+                            <label>Email</label>
+                            <div class="form-group">
+                                <input type="text" 
+                                    class="form-control"
+                                    placeholder="Email"
+                                    [formControl]="myForm.controls['email']">
+                            </div>
+                            <label>PRN</label>
+                            <div class="form-group">
+                                <input type="text" 
+                                    class="form-control"
+                                    placeholder="PRN"
+                                    [formControl]="myForm.controls['PRN']">
+                            </div>
+                            <div class="alert alert-danger" 
+                                *ngIf=" !myForm.controls['email'].valid && myForm.controls['email'].touched ">
+                                Your Institute Email Required 
+                            </div>
+                            <label>Password</label>
+                            <div class="form-group">
+                                <input type="password" 
+                                    class="form-control"
+                                    placeholder="Password"
+                                    [formControl]="myForm.controls['password']">
+                            </div>
+                            <div class="alert alert-danger"
+                                *ngIf=" !myForm.controls['password'].valid && myForm.controls['password'].touched">
+                                Password Should be longer than 8 characters 
+                            </div>
+                            <label>Confirm Password</label>
+                            <div class="form-group">
+                                <input type="password"
+                                    class="form-control"
+                                    placeholder="Confirm Password"
+                                    [formControl]="myForm.controls['confirmPassword']">
+                            </div>
+                            <div class="alert alert-danger" *ngIf=" (!myForm.controls['confirmPassword'].valid && myForm.controls['confirmPassword'].touched)">
+                                Password Does not Match 
+                            </div>
+                            <div class="alert alert-warning" >
+                                *Note - For faculty roles, privilege will only be awarded post approval of HOD  
+                            </div>
+                            <div class="form-group">
+                            <label>Roles</label>
+                            <select class="form-control"
+                                    [formControl]="myForm.controls['role']">
+                                <option value="" disabled selected> -- SELECT -- </option>
+                                <option value="student">Student</option>
+                                <option value="faculty">Faculty</option>
+                            </select>
+                            </div>
+                            <button 
+                                    type="button"
+                                    (click)='onSubmit(myForm)'
+                                    class="btn-round btn btn-warning btn-block"
+                                    [disabled]="!myForm.valid"
+                                    >
+                                Submit
+                            </button>
+                            <div class="alert-success alert" *ngIf='message'>
+                                {{message}}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

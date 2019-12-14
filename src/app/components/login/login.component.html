@@ -1,0 +1,52 @@
+    <div class="p-5">
+        <div class="col-sm-6 offset-3 p-5">
+            <div class="card border-0">
+                <div class="card-title text-center"><h5>Login</h5></div>
+                <div class="card-body">
+                    <form [formGroup]='myForm' (ngSubmit)="onSubmit(myForm)">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="">Email</label>
+                                    <input type="email"
+                                           class="form-control"
+                                           placeholder="Email"
+                                           [formControl]="myForm.controls['email']">
+                                    <div   class="alert alert-danger"
+                                           *ngIf="myForm.controls['email'].touched && !myForm.controls['email'].valid">Please Enter SIT Email </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="">Password</label>
+                                    <input type="password"
+                                           class="form-control"
+                                           placeholder="Password"
+                                           [formControl]="myForm.controls['password']">
+                                   <div   class="alert alert-danger"
+                                        *ngIf="myForm.controls['password'].touched && !myForm.controls['password'].valid"> Password Cannot be less than 8 Characters
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col">
+                                    <button type='submit'
+                                            class="btn-round btn btn-warning btn-block"
+                                            [disabled]='!myForm.valid'
+                                            routerLink='/home'
+                                            > 
+                                            Login 
+                                    </button>
+                                    <div class="alert alert-danger" *ngIf='userError' >
+                                        User Not registered
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

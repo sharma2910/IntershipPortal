@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="offset-sm-1 col-sm-10">
+    <div class="card text-blank">
+      <div class="card-body">
+        <div class="card-title text-center">
+          <h3>Profile</h3>
+        </div>
+        <hr/>
+        <div class="card-text">
+          <div class="row">
+            <div class="col-sm-3 text-center">
+              <img src="../../../assets/profile.jpg" height="256" width="256" class="img-circle">
+            </div>
+
+            <div class="col-sm-9">
+              <h1>{{user.displayName}}</h1>
+
+              <h4>{{user.email}}</h4>
+
+              <p>{{user.bio}}</p>
+
+              <p>{{user.interests}}</p>
+
+              <span class="badge badge-pill badge-primary badge-lg ml-3" *ngFor="let hobby of user.hobbies">
+                 {{ hobby }} 
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="offset-sm-1 col-sm-10">
+    <div class="card text-blank">
+      <div class="card-body">
+        <div class="card-title">
+          <h3 *ngIf='isFaculty'>Posts by {{user.displayName}}</h3>
+          <h3 *ngIf='isStudent'>Applied To</h3>
+        </div>
+        <div class="card-text">
+          <app-post *ngFor="let internship of internships"
+                      [internship]="internship.data()"
+                      [int]="internship"
+                      [uid]="internship.id"
+                      (onDelete)="onInternshipDeleted()"></app-post>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

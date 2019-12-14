@@ -1,0 +1,117 @@
+<div class="">
+    <div class="">
+        <div class="">
+            <div class="card border-0">
+                <div class="card-title text-center">
+                    <h5>Post Internship</h5>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">  
+                        <div class="form-group">
+                            <label>Internship Title</label>
+                            <input type="text" 
+                                class="form-control"
+                                placeholder="Internship Title"
+                                [formControl]="myForm.controls['title']">
+                        </div>
+                        <div class="alert alert-danger" 
+                            *ngIf="( !myForm.controls['title'].valid && myForm.controls['title'].touched )">
+                            Title Required 
+                        </div>
+                        <div class="form-row">
+                                <div class="form-group col-sm-6">
+                                    <label>Branch</label>
+                                    <select 
+                                     class="form-control"
+                                     [formControl]="myForm.controls['branch']">
+                                        <option value="" disabled selected> -- SELECT -- </option>
+                                        <option value="CS">CS</option>
+                                        <option value="IT">IT</option>
+                                        <option value="E&TC">E&TC</option>
+                                        <option value="MECH">MECH</option>
+                                        <option value="CIVIL">CIVIL</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label>Year</label>
+                                    <select 
+                                     class="form-control"
+                                     [formControl]="myForm.controls['year']">
+                                        <option value="" disabled selected> -- SELECT -- </option>
+                                        <option value="2016">2016-20</option>
+                                        <option value="2017">2017-21</option>
+                                        <option value="2018">2018-22</option>
+                                        <option value="2019">2019-23</option>
+                                    </select>
+                                </div>
+                            </div>
+                        <div class="alert alert-danger" 
+                            *ngIf="( !myForm.controls['branch'].valid || !myForm.controls['year'].valid )&&
+                            ( myForm.controls['branch'].touched || myForm.controls['year'].touched )">
+                            Please Provide Branch And Batch 
+                        </div>
+                        <label>Company</label>
+                        <div class="form-group">
+                            <input type="text" 
+                                class="form-control"
+                                placeholder="Company"
+                                [formControl]="myForm.controls['company']">
+                        </div>
+                        <label>Location</label>
+                        <div class="form-group">
+                            <input type="text" 
+                                class="form-control"
+                                placeholder="Location"
+                                [formControl]="myForm.controls['location']">
+                        </div>
+                        <label>Start Date</label>
+                        <div class="form-group">
+                            <input type="date" 
+                                class="form-control"
+                                placeholder="Company"
+                                [formControl]="myForm.controls['startDate']">
+                        </div>
+                        <label>Apply By</label>
+                        <div class="form-group">
+                            <input type="date" 
+                                class="form-control"
+                                placeholder="Company"
+                                [formControl]="myForm.controls['applyBy']">
+                        </div>
+                        <div class="alert alert-danger" 
+                            *ngIf=" !myForm.controls['company'].valid && myForm.controls['company'].touched ">
+                            Your Institute Email Required 
+                        </div>
+                        <label>Stipend</label>
+                        <div class="form-group">
+                            <input type="text" 
+                                class="form-control"
+                                placeholder="INR"
+                                [formControl]="myForm.controls['stipend']">
+                        </div>
+                        <div class="alert alert-danger" 
+                        *ngIf=" !myForm.controls['stipend'].valid && myForm.controls['stipend'].touched ">
+                            Please Enter Stipend 
+                        </div>
+                        <div class="form-group green-border-focus">
+                            <label>Details</label>
+                            <textarea class="form-control"
+                             id="exampleFormControlTextarea5" 
+                             rows="3"
+                             [formControl]="myForm.controls['details']"
+                             ></textarea>
+                        </div>
+                        
+                        <button 
+                                type="submit"
+                                class="btn-round btn btn-warning btn-block"
+                                [disabled]="!myForm.valid"
+                                >
+                            Submit
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

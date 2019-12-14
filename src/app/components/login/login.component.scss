@@ -1,0 +1,18 @@
+.centered {
+    position: fixed; /* or absolute */
+    top: 50%;
+    left: 50%;
+  }
+.row{
+  padding: 5px 0px;
+  }
+
+
+.alert{
+  position: relative;
+  top: 10px;
+}
+
+.btn-round{
+  border-radius: 20px;
+}
